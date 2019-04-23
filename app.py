@@ -18,6 +18,15 @@ class MainPageHandler(tornado.web.RequestHandler):
         infos = mysql_conn.query(sql)
         self.render('main.html',infos=infos)
 
+class SearchPageHandler(tornado.web.RequestHandler):
+    def post(self):
+        info_keyword = self.get_argument('info_keyword').encode("utf-8")
+        sql = "SELECT * FROM infos WHERE info_title LIKE '%%%%%s%%%%'"%info_keyword
+        print (type(info_keyword))
+        print (sql)
+        infos = mysql_conn.query(sql)
+        self.render('main.html',infos=infos)
+
 class SingleItemHandler(tornado.web.RequestHandler):
     def get(self):
         info_id = self.get_argument('info_id').encode("utf-8")
@@ -48,7 +57,8 @@ if __name__ == '__main__':
     app = tornado.web.Application(
         handlers=[(r'/po', PostInfoHandler),
                   (r'/all',MainPageHandler),
-                  (r'/item',SingleItemHandler)],
+                  (r'/item',SingleItemHandler),
+                  (r'/search',SearchPageHandler)],
         template_path=os.path.join(os.path.dirname(__file__),"templates")
     )
     http_server = tornado.httpserver.HTTPServer(app)

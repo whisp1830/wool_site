@@ -33,11 +33,9 @@
                     <a class="nav-item nav-feedback" v-bind:class="{current:(at=='page'&&subat=='feedback')}" href="/po">我要爆料</a>
                 </div>
                 <div class="col-12 col-4-m">
-                        <form id="search" method="post" action="https://xclient.info/search" role="search">
-                           
+                        <form id="search" method="post" action="/search">
                             <span class="input_wrap">
-                                <input type="text" name="s" class="text" placeholder="输入关键字搜索" />
-
+                                <input type="text" name="info_keyword" class="text" placeholder="输入关键字搜索" />
                                 <button type="submit" class="submit icon-search"></button>
                             </span>
                             <input type="hidden" name="t" value="soft" />
