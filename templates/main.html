@@ -6,12 +6,72 @@
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>羊毛优惠分享中心</title>
+<style>
+ *{
+     padding: 0;
+     margin: 0;
+}
+body{
+    padding: 0px;
+    background: url() 0 0 no-repeat;
+    background-size: cover;
+}
+
+.demo{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.demo-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 671px;
+    /*filter:Alpha(opacity=50);*/
+    background-color: rgba(0,0,0,0.4); /*实现透明背景*/
+    display: none;
+}
+#button{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: yellow;
+    margin: 20px 0 0 40px;
+    position: relative;
+    border: 0;
+    box-shadow:  2px 2px 10px red;
+    -webkit-box-shadow:  2px 2px 10px red;
+    -moz-box-shadow:  2px 2px 10px red;
+}
+.demo-txt{
+    position: relative;
+    z-index: 1;
+    color: #000;
+    background: white;
+    width: 30%;
+    height: 200px;
+    margin:auto;
+    padding: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+#btn{
+    float: right;
+}
+</style>
 <link rel="stylesheet" href="https://img.xclient.info/css/styles.min.css">
 <link rel="stylesheet" href="https://img.xclient.info/css/style.v3.css?v=19041513">
-
-
-<meta name="description" itemprop="description" content="精品MAC应用分享，每天分享大量mac软件，为您提供优质的mac软件,免费软件下载服务" />
-<meta name="keywords" itemprop="keywords" content="mac,osx,app,mac软件,苹果软件下载,mac软件下载,mac免费软件下载,精品mac应用,xclient" />
 </head>
 <body>
 
@@ -23,13 +83,12 @@
           <div class="col-12 col-9-m">
               <div class="row clear">
                 <div class="col-12 col-8-m nav">
-                    <a class="nav-item nav-home" v-bind:class="{current:at=='index'}" href="/all">全部羊毛</a>
+                    <a class="nav-item nav-home" v-bind:class="{current:at=='index'}" href="/">全部羊毛</a>
 
                     <a class="nav-item nav-soft" v-bind:class="{current:at.indexOf('soft')>=0}" href="https://xclient.info/s/">我的订阅</a>
 
                     <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="https://xclient.info/a/">排行榜</a>
-                    <a class="nav-item nav-wishlist" v-bind:class="{current:(at=='page'&&subat=='wishlist')}" href="https://xclient.info/wishlist">分类</a>
-
+                    <a class="nav-item nav-wishlist" href="#">分类</a>
                     <a class="nav-item nav-feedback" v-bind:class="{current:(at=='page'&&subat=='feedback')}" href="/po">我要爆料</a>
                 </div>
                 <div class="col-12 col-4-m">
@@ -47,19 +106,15 @@
           
         </div>
     </div>
-
-    
-
-
 </header><!-- end #header -->
 
 <ul class="post_list row">
     {% for info in infos %}
     <li class="col-3 col-6-m col-3-l col-3-xl">
         <div class="main">
-            <a href="/item?info_id={{info['info_id']}}" title="Tomates 9.0 番茄时间管理">
+            <a href="/item?info_id={{info['info_id']}}" title="{{info['info_title']}}">
                 {% if info['info_image'] %}
-                <img src="http://10.245.146.207/images/{{info['info_image'].split('/')[-1]}}" alt="SONY 索尼 KD-98Z9G 98英寸 8K 液晶电视">
+                <img src="http://10.245.146.207/images/{{info['info_image'].split('/')[-1]}}" alt="{{info['info_title']}}">
                 {% end %}
                 <div class="status_bar">
                     <span class="item download">
@@ -76,19 +131,26 @@
                     <p>{{info['info_detail']}}</p>
                 </div>
             </a>
-        <div class="cates">
-            {% if info['label_usage'] %}
-                <a href="https://xclient.info/s/c/application/">{{info['label_usage']}}</a>
-            {% end %}
-            {% if info['label_source'] %}
-                <a href="https://xclient.info/s/c/application/">{{info['label_source']}}</a>
-            {% end %}
+            <div class="cates">
+
             </div>
         </div>
     </li>
     {% end %}
 
 </ul>
+<script>
+    var demobg = document.querySelector(".demo-bg");
+    var demotxt = document.querySelector(".demo-txt");
+    function openDialog() {
+        demotxt.style.display = "block";
+        demobg.style.display = "block";
+    }
 
+    function closeDialog() {
+        demotxt.style.display = "none";
+        demobg.style.display = "none";
+    }
+</script>
 </body>
 </html>

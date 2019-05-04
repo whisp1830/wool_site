@@ -1,0 +1,37 @@
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{{infos['info_title']}}</title>
+<link rel="shortcut icon" href="https://img.xclient.info/icon/favicon.ico" type="image/x-icon">
+<link href="https://cdn.bootcss.com/Swiper/4.2.0/css/swiper.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://img.xclient.info/css/styles.min.css">
+<link rel="stylesheet" href="https://img.xclient.info/css/style.v3.min.css?v=19041513">
+</head>
+
+
+<div class="container-xl">
+        <img class="lim-icon app_ico" src="http://10.245.146.207/images/{{infos['info_image'].split('/')[-1]}}" attr="{{infos['info_title']}}" title="{{infos['info_title']}}" alt="{{infos['info_title']}}">
+        <h1 class="post-title">{{infos['info_title']}}</h1>
+        <ul class="post-meta">
+            <li>
+                <time datetime="2019-01-22T16:36:00+08:00">{{infos['info_update_time']}}</time>
+            </li>
+            <li>
+                <i class="icon-view"></i>{{infos['info_price']}}            
+            </li>
+            <li>
+                <i class="icon-view"></i>{{infos['info_detail']}}            
+            </li>
+        </ul>
+
+        <div class="share_box">
+            <span class="social-share share-component" data-initialized="true" data-title="{{infos['info_title']}}">
+                <a href="http://service.weibo.com/share/share.php?url=https%3A%2F%2Fxclient.info%2Fs%2Fwinx-dvd-ripper.html&amp;title=WinX%20DVD%20Ripper%206.2.1-20190416%20DVD%E8%A7%86%E9%A2%91%E8%BD%AC%E6%8D%A2&amp;pic=https%3A%2F%2Fimg.xclient.info%2Fimg%2Flogo.png&amp;appkey=" class="social-share-icon icon-weibo" target="_blank"></a>
+                <a href="javascript:" class="social-share-icon icon-wechat"><div class="wechat-qrcode"><h4>微信扫一扫：分享</h4><div class="qrcode" title="https://xclient.info/s/winx-dvd-ripper.html"><canvas width="100" height="100" style="display: none;"></canvas><img alt="Scan me!" src="data:image/png;base64,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" style="display: block;"></div><div class="help"><p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p></div></div></a>
+                <a href="http://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fxclient.info%2Fs%2Fwinx-dvd-ripper.html&amp;title=WinX%20DVD%20Ripper%206.2.1-20190416%20DVD%E8%A7%86%E9%A2%91%E8%BD%AC%E6%8D%A2&amp;source=WinX%20DVD%20Ripper%206.2.1-20190416%20DVD%E8%A7%86%E9%A2%91%E8%BD%AC%E6%8D%A2%20-%20%E7%B2%BE%E5%93%81MAC%E5%BA%94%E7%94%A8%E5%88%86%E4%BA%AB&amp;desc=WinX%20DVD%20Ripper%E5%8F%AF%E4%BB%A5%E5%B8%AE%E5%8A%A9%E6%82%A8%E5%B0%86%E4%BB%BB%E4%BD%95%20DVD%E5%88%BB%E5%BD%95%E5%88%B0iTunes%EF%BC%8CMP4%EF%BC%8CMKV%EF%BC%8CMOV%EF%BC%8CFLV%EF%BC%8CAVI%EF%BC%8CMPEG%EF%BC%8CMP3%E7%AD%89%EF%BC%8C%E4%BB%A5%E5%8F%8A%20iPhone%EF%BC%8CiPod%E7%9A%84%E5%85%BC%E5%AE%B9%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%EF%BC%8C%E4%B8%BA%E6%82%A8%E6%8F%90%E4%BE%9B%E5%B0%86DVD%E5%A4%87%E4%BB%BD%E5%88%B0%E7%A1%AC%E7%9B%98%E9%A9%B1%E5%8A%A8%E5%99%A8%E5%92%8CUSB%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E5%BC%8F%E3%80%82&amp;pics=https%3A%2F%2Fimg.xclient.info%2Fimg%2Flogo.png" class="social-share-icon icon-qq" target="_blank"></a>
+            </span>
+        </div>
+    </div>
