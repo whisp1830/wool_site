@@ -119,7 +119,7 @@ body{
                 <div class="status_bar">
                     <span class="item download">
                         <i class="icon-download"></i>
-                        <font color="#4eaade">{{info['info_price']}}</font>  
+                        <font color="#4eaade">{{info['info_price'][:8]}}</font>  
                     </span>
                     <span class="item date">
                         <i class="icon-date"></i>
@@ -132,7 +132,11 @@ body{
                 </div>
             </a>
             <div class="cates">
-
+                {% if info['info_tags'] %}
+                    {% for tag in info['info_tags'].split(",")[:3]%}
+                    <a href="#">{{tag}}</a>
+                    {% end %}
+                {% end %}
             </div>
         </div>
     </li>

@@ -16,6 +16,7 @@ class MainPageHandler(tornado.web.RequestHandler):
     def get(self):
         sql = "SELECT * FROM infos ORDER BY info_update_time DESC LIMIT 200"
         infos = mysql_conn.query(sql)
+
         self.render('main.html',infos=infos)
 
 class SearchPageHandler(tornado.web.RequestHandler):
@@ -32,12 +33,26 @@ class SingleItemHandler(tornado.web.RequestHandler):
         infos = mysql_conn.query(sql,info_id)[0]
         if infos['info_detail']:
             infos['info_detail'] = infos['info_detail'].encode("utf-8").replace("。","。<br>")
-
+        infos['info_tags'] = infos['info_tags'].split(",")[0:3]
         sql = "UPDATE infos SET info_visited = info_visited + 1 WHERE info_id=%s;"
         mysql_conn.execute(sql,info_id)
         self.render('info_detail.html',infos=infos)
-    def post(self):
-        pass
+
+class CommentItemHandler(tornado.web.RequestHandler):
+	def get(self):
+		yn = self.get_argument("yn").encode("utf-8")
+		info_id = self.get_argument("info_id").encode("utf-8")
+		if yn == "y":
+			sql = "UPDATE infos SET up = up + 1 WHERE info_id=%s;"
+	    	print sql
+	    	print sql
+	    	mysql_conn.execute(sql,info_id)
+
+
+
+
+
+        
 
 
 class PostInfoHandler(tornado.web.RequestHandler):
@@ -63,7 +78,8 @@ if __name__ == '__main__':
         handlers=[(r'/po', PostInfoHandler),
                   (r'/',MainPageHandler),
                   (r'/item',SingleItemHandler),
-                  (r'/search',SearchPageHandler)],
+                  (r'/search',SearchPageHandler),
+                  (r'/comment',CommentItemHandler)],
         template_path=os.path.join(os.path.dirname(__file__),"templates")
     )
     http_server = tornado.httpserver.HTTPServer(app)
