@@ -111,6 +111,16 @@
                             <a href="javascript:;" class="lim-album-item swiper-slide" title="{{infos['info_title']}}">
                                 <img src="http://10.245.146.207/images/{{infos['info_order_shot'].split('/')[-1]}}" alt="{{infos['info_title']}}">
                             </a>
+                            {% else %}
+                            <a href="javascript:;" class="lim-album-item swiper-slide" title="{{infos['info_title']}}">
+                                <img src="http://10.245.146.207/images/{{infos['info_image'].split('/')[-1]}}" alt="{{infos['info_title']}}">
+                            </a>
+                            <a href="javascript:;" class="lim-album-item swiper-slide" title="{{infos['info_title']}}">
+                                <img src="http://10.245.146.207/images/{{infos['info_image'].split('/')[-1]}}" alt="{{infos['info_title']}}">
+                            </a>
+                            <a href="javascript:;" class="lim-album-item swiper-slide" title="{{infos['info_title']}}">
+                                <img src="http://10.245.146.207/images/{{infos['info_image'].split('/')[-1]}}" alt="{{infos['info_title']}}">
+                            </a>
                             {% end %}
                         </div>
                         <!-- Add Pagination -->
