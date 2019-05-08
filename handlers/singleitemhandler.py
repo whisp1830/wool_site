@@ -16,6 +16,13 @@ class SingleItemHandler(tornado.web.RequestHandler):
         if infos['info_detail']:
             infos['info_detail'] = infos['info_detail'].encode("utf-8").replace("。","。<br>")
         infos['info_tags'] = infos['info_tags'].split(",")[0:3]
+
+        sql = 'SELECT * FROM infos WHERE MATCH(info_tags) AGAINST(%s) UNION '\
+                'SELECT * FROM infos WHERE MATCH(info_tags) AGAINST(%s) UNION '\
+                'SELECT * FROM infos WHERE MATCH(info_tags) AGAINST(%s) LIMIT 6;'
+        sql_param = infos['info_tags']
+        recommends = mysql_conn.query(sql,sql_param[2],sql_param[1],sql_param[0])
+
         sql = "UPDATE infos SET info_visited = info_visited + 1 WHERE info_id=%s;"
         mysql_conn.execute(sql,info_id)
-        self.render('info_detail.html',infos=infos)
+        self.render('info_detail.html',infos=infos,recommends=recommends)

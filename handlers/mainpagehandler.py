@@ -10,7 +10,7 @@ mysql_conn = torndb.Connection("10.245.146.207:3306","wool",user="campuswool",pa
 
 class MainPageHandler(tornado.web.RequestHandler):
     def get(self):
-        sql = "SELECT * FROM infos ORDER BY info_update_time DESC LIMIT 200"
+        sql = "SELECT * FROM infos ORDER BY info_id DESC LIMIT 100"
         infos = mysql_conn.query(sql)
 
         self.render('main.html',infos=infos)

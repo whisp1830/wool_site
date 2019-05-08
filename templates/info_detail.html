@@ -8,7 +8,6 @@
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>{{infos['info_title']}}</title>
-<link rel="shortcut icon" href="https://img.xclient.info/icon/favicon.ico" type="image/x-icon" />
 <link href="https://cdn.bootcss.com/Swiper/4.2.0/css/swiper.min.css" rel="stylesheet">
 <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://img.xclient.info/css/styles.min.css">
@@ -374,24 +373,26 @@
                 <b class="tit">猜你喜欢</b>
 
                 <ul class="post_list row">
+                    {% for r in recommends %}
                     <li class="col-6 col-4-m col-3-l col-2-xl">
                         <div class="main">
-                            <a href="https://xclient.info/s/movavi-video-editor.html" title="Movavi Video Editor 15.3.1 功能强大的视频编辑软件">
-                                <img class="lim-icon" src="https://img.xclient.info/attachment/2018/10/712a7d7e-e8de-15b3-9ae7-b40f35562126.png" alt="Movavi Video Editor 15.3.1 功能强大的视频编辑软件">
+                            <a href="/item?info_id={{r['info_id']}}" title="{{r['info_title']}}">
+                                <img class="lim-icon" src="http://10.245.146.207/images/{{r['info_image'].split('/')[-1]}}" alt="{{r['info_title']}}">
                                 <div class="status_bar">
                                     <span class="item download"><i class="icon-download"></i>1960</span>
-                                    <span class="item date"><i class="icon-date"></i>2019.04.30</span>
+                                    <span class="item date"><i class="icon-date"></i>{{r['info_update_time']}}</span>
                                 </div>
                                 <div class="info">
-                                    <h3>Movavi Video Editor 15.3.1 功能强大的视频编辑软件</h3>
-                                    <p>Video Editor Movavi 是一款十分好用的视频编辑软件，除了常规的视频编辑功能外，Video Editor Movavi Mac版还可以通过摄像头和麦克风录制视频和音频，提升视频质量，将图片快速制作成为视频等功能。</p>
+                                    <h3>{{r['info_title']}}</h3>
+                                    <p>{{r['info_detail']}}</p>
                                 </div>
                             </a>
                             <div class="cates">
-                                <a href="https://xclient.info/s/c/media/">媒体工具</a>                            
+                                <a href="https://xclient.info/s/c/media/">{{r['info_tags']}}</a>                            
                             </div>
                         </div>
                     </li>
+                    {% end %}
 
                 </ul>
 

@@ -11,6 +11,6 @@ mysql_conn = torndb.Connection("10.245.146.207:3306","wool",user="campuswool",pa
 class SearchPageHandler(tornado.web.RequestHandler):
     def post(self):
         info_keyword = self.get_argument('info_keyword').encode("utf-8")
-        sql = "SELECT * FROM infos WHERE info_title LIKE '%%%%%s%%%%'"%info_keyword
+        sql = "SELECT * FROM infos WHERE info_title LIKE '%%%%%s%%%%' ORDER BY info_id DESC"%info_keyword
         infos = mysql_conn.query(sql)
         self.render('main.html',infos=infos)
