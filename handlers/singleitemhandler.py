@@ -60,4 +60,5 @@ class SingleItemHandler(tornado.web.RequestHandler):
         top = self.get_top()
         self.update_visited_count(info_id)
         
-        self.render('info_detail.html',infos=infos,recommends=recommends,top=top)
+        self.render('detail_page.html',infos=infos,recommends=recommends,top=top)
+        
