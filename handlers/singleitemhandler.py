@@ -51,6 +51,7 @@ class SingleItemHandler(tornado.web.RequestHandler):
         info_id = self.get_argument('info_id').encode("utf-8")
         sql = "SELECT * FROM infos,infos_comment WHERE infos.info_id=%s and \
                 infos.info_id=infos_comment.info_id"
+        print mysql_conn.query(sql,info_id)
         infos = mysql_conn.query(sql,info_id)[0]
         if infos['info_detail']:
             infos['info_detail'] = infos['info_detail'].encode("utf-8").replace("。","。<br>")

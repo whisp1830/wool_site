@@ -8,11 +8,11 @@ from handlers.rankpagehandler 	 import RankPageHandler
 
 
 urls=[		
+		(r'/',MainPageHandler),
 		(r'/po', PostInfoHandler),
-        (r'/',MainPageHandler),
         (r'/item',SingleItemHandler),
         (r'/search',SearchPageHandler),
         (r'/comment',CommentItemHandler),
         (r'/types',TypesHandler),
-        (r'/rank',RankPageHandler)
+        (r'/rank/(\w+)',RankPageHandler)
 ]

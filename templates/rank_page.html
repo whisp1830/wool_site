@@ -47,11 +47,56 @@
         </div>
     </div>
 </header><!-- end #header -->
+
 <br>
-<div id="lim-cate-list" class="post-filter">
-	{% for t in tags_count %}
-	        <a href="#" class="" title="热度{{t['info_count']}}">{{t['info_tag']}}</a>
-	{% end %}
+<form action="demo-form.php" method="get">
+<input list="browsers" name="browser">
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<input type="submit">
+</form>
+
+
+<ul class="post_list row">
+    {% for info in infos %}
+    <li class="col-3 col-6-m col-3-l col-3-xl">
+        <div class="main">
+            <a href="/item?info_id={{info['info_id']}}" title="{{info['info_title']}}">
+                {% if info['info_image'] %}
+                <img src="http://10.245.146.207/images/{{info['info_image'].split('/')[-1]}}" alt="{{info['info_title']}}">
+                {% end %}
+                <div class="status_bar">
+                    <span class="item download">
+                        <span class="glyphicon glyphicon-usd"></span>
+                        <font color="#4eaade">{{info['info_price'][:8]}}</font>  
+                    </span>
+                    <span class="item date">
+                        <i class="icon-date"></i>
+                        {{info['info_update_time']}}                                              
+                    </span>
+                </div>
+                <div class="info">
+                    <h3>{{info['info_title']}}</h3>
+                    <p>{{info['info_detail']}}</p>
+                </div>
+            </a>
+            <div class="cates">
+                {% if info['info_tags'] %}
+                    {% for tag in info['info_tags'].split(",")[:3]%}
+                    <a href="#">{{tag}}</a>
+                    {% end %}
+                {% end %}
+            </div>
+        </div>
+    </li>
+    {% end %}
+
+</ul>
 
                                             
 </div>
