@@ -16,4 +16,5 @@ class RankPageHandler(tornado.web.RequestHandler):
 			sql = "SELECT * FROM infos WHERE MATCH(info_tags) AGAINST(%s) ORDER BY info_update_time DESC LIMIT 40"
 			infos = mysql_conn.query(sql,kwd)
 			self.render("rank_page.html",infos=infos,page=1,source="rank")
-		if data = ""
+		if data == "":
+			pass

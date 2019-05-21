@@ -62,4 +62,8 @@ class SingleItemHandler(tornado.web.RequestHandler):
         self.update_visited_count(info_id)
         
         self.render('detail_page.html',infos=infos,recommends=recommends,top=top)
+
+    def post(self):
+        pass
+        
         

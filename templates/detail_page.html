@@ -238,30 +238,22 @@
 <li class="li other" id="other_report_reason" data-name="其他举报"><div class="other_report_box">
 请选择举报理由：
 <ul class="report_reason">
-<li>
-<input type="radio" id="report_reason_one" data-type="3">
-<label for="report_reason_one">劣质商品</label>
-</li>
-<li>
-<input type="radio" id="report_reason_two" data-type="4">
-<label for="report_reason_two">信息涉及黄色，反动内容</label>
-</li>
-<li>
-<input type="radio" id="report_reason_three" data-type="5">
-<label for="report_reason_three">虚假优惠信息</label>
-</li>
-<hr>
-<li>
-<input type="radio" id="report_reason_four" data-type="6">
-<label for="report_reason_four">其他</label>
-<input type="text" maxlength="30" id="report_reason_des" value="" placeholder="请输入不值理由">
-</li>
+        <form method="post" action="/item">
+            <input type="checkbox" name="reason" value="bad">假冒伪劣<br>
+            <input type="checkbox" name="reason" value="porn">色情反动<br>
+            <input type="checkbox" name="reason" value="fake">虚假宣传<br>
+            <input type="checkbox" name="reason" value="other">其他<br>
+            <input type="submit">
+        </form>
 </ul>
-<button>确认提交</button>
+
 </div>
 </li>
 </ul>
 </div>
+
+
+
 
 <div class="row pad-top-20">
     <div class="col-12">
