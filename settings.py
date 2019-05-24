@@ -9,4 +9,5 @@ PORT = 8000
 SETTINGS = dict(
     template_path=os.path.join(os.path.dirname(__file__), "templates"),  # 模板路径
     static_path=os.path.join(os.path.dirname(__file__), "static"),  # 静态文件路径
+    cookie_secret="campuswool 2019"
 )

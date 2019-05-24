@@ -20,18 +20,20 @@
     <div class="container-xl">
         <div class="row clear">
 
-          <div class="col-12 col-9-m">
+          <div class="col-12 col-12-m">
               <div class="row clear">
-                <div class="col-12 col-8-m nav">
+                <div class="col-12 col-6-m nav">
                     <a class="nav-item nav-home" v-bind:class="{current:at=='index'}" href="/">全部羊毛</a>
 
                     <a class="nav-item nav-soft" v-bind:class="{current:at.indexOf('soft')>=0}" href="https://xclient.info/s/">我的订阅</a>
 
-                    <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="/rank">排行榜</a>
+                    <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="/rank/best">排行榜</a>
                     <a class="nav-item nav-wishlist" href="/types">分类</a>
                     <a class="nav-item nav-feedback" v-bind:class="{current:(at=='page'&&subat=='feedback')}" href="/po">我要爆料</a>
                 </div>
-                <div class="col-12 col-4-m">
+
+
+                <div class="col-12 col-3-m">
                         <form id="search" method="post" action="/search">
                             <span class="input_wrap">
                                 <input type="text" name="info_keyword" class="text" placeholder="输入关键字搜索" />
@@ -40,17 +42,45 @@
                             <input type="hidden" name="t" value="soft" />
                         </form>
                 </div>
+
+                <div class="col-12 col-3-m nav">
+                        {% if username == ""%}
+                            <a class="nav-item nav-feedback" href="/login">登录</a>
+                        {% else %}
+                            <a href="#">我的保存</a>
+                            <a href="/logout">退出</a>
+                        {% end %}
+                </div>
+
               </div>
+            <!--
+                <div class="col-12 col-8-m nav">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown ">
+                        {% if username == ""%}
+                             <a href="/login">登录</a>
+                        {% else %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">我的保存</a></li>
+                                <li><a href="/logout">退出</a></li>
+                            </ul>
+                        {% end %}
+                      </li>
+                    </ul>
+                </div>
+            -->
                 
           </div>
           
         </div>
     </div>
 </header><!-- end #header -->
+
 <br>
 <div id="lim-cate-list" class="post-filter">
 	{% for t in tags_count %}
-	        <a href="/search?tag={{t['info_tag']}}" class="" title="热度{{t['info_count']}}">{{t['info_tag']}}</a>
+	        <a href="/search?tag=${{t['info_tag']}}" class="" title="热度{{t['info_count']}}">{{t['info_tag']}}</a>
 	{% end %}
 
                                             

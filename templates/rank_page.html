@@ -20,18 +20,20 @@
     <div class="container-xl">
         <div class="row clear">
 
-          <div class="col-12 col-9-m">
+          <div class="col-12 col-12-m">
               <div class="row clear">
-                <div class="col-12 col-8-m nav">
+                <div class="col-12 col-6-m nav">
                     <a class="nav-item nav-home" v-bind:class="{current:at=='index'}" href="/">全部羊毛</a>
 
                     <a class="nav-item nav-soft" v-bind:class="{current:at.indexOf('soft')>=0}" href="https://xclient.info/s/">我的订阅</a>
 
-                    <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="/rank">排行榜</a>
+                    <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="/rank/best">排行榜</a>
                     <a class="nav-item nav-wishlist" href="/types">分类</a>
                     <a class="nav-item nav-feedback" v-bind:class="{current:(at=='page'&&subat=='feedback')}" href="/po">我要爆料</a>
                 </div>
-                <div class="col-12 col-4-m">
+
+
+                <div class="col-12 col-3-m">
                         <form id="search" method="post" action="/search">
                             <span class="input_wrap">
                                 <input type="text" name="info_keyword" class="text" placeholder="输入关键字搜索" />
@@ -40,7 +42,34 @@
                             <input type="hidden" name="t" value="soft" />
                         </form>
                 </div>
+
+                <div class="col-12 col-3-m nav">
+                        {% if username == ""%}
+                            <a class="nav-item nav-feedback" href="/login">登录</a>
+                        {% else %}
+                            <a href="#">我的保存</a>
+                            <a href="/logout">退出</a>
+                        {% end %}
+                </div>
+
               </div>
+            <!--
+                <div class="col-12 col-8-m nav">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown ">
+                        {% if username == ""%}
+                             <a href="/login">登录</a>
+                        {% else %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">我的保存</a></li>
+                                <li><a href="/logout">退出</a></li>
+                            </ul>
+                        {% end %}
+                      </li>
+                    </ul>
+                </div>
+            -->
                 
           </div>
           
@@ -49,22 +78,16 @@
 </header><!-- end #header -->
 
 <br>
-<form action="demo-form.php" method="get">
-<input list="browsers" name="browser">
-<datalist id="browsers">
-  <option value="Internet Explorer">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
-</datalist>
-<input type="submit">
-</form>
+<div id="lim-cate-list" class="post-filter">
+    <a href="/rank/viewed" >当前热门</a>
+    <a href="/rank/cabbage" >每日白菜</a>
+    <a href="/rank/best" >最受好评</a>
+    <a href="/rank/worst" >风评被害</a>
 
 
 <ul class="post_list row">
     {% for info in infos %}
-    <li class="col-3 col-6-m col-3-l col-3-xl">
+    <li class="col-6 col-6-m col-6-l col-6-xl">
         <div class="main">
             <a href="/item?info_id={{info['info_id']}}" title="{{info['info_title']}}">
                 {% if info['info_image'] %}
@@ -73,7 +96,7 @@
                 <div class="status_bar">
                     <span class="item download">
                         <span class="glyphicon glyphicon-usd"></span>
-                        <font color="#4eaade">{{info['info_price'][:8]}}</font>  
+                        <font color="#4eaade">{{info['info_price']}}</font>  
                     </span>
                     <span class="item date">
                         <i class="icon-date"></i>
@@ -87,8 +110,10 @@
             </a>
             <div class="cates">
                 {% if info['info_tags'] %}
-                    {% for tag in info['info_tags'].split(",")[:3]%}
-                    <a href="#">{{tag}}</a>
+                    {% for tag in info['info_tags'].split(",")%}
+                        {% if tag %}
+                        <a href="/search?tag=${{tag}}">{{tag}}</a>
+                        {% end %}
                     {% end %}
                 {% end %}
             </div>
