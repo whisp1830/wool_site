@@ -78,10 +78,6 @@ class SingleItemHandler(BaseHandler):
         recommends = self.get_recommends(infos['info_tags'])
         up_and_down = self.get_up_and_down(info_id)[0]
         self.update_visited_count(info_id)
-        
-        print up_and_down
-        print up_and_down
-        print up_and_down        
 
         self.render('detail_page.html',infos=infos,recommends=recommends,top=top,up_down=up_and_down,username=name)
 

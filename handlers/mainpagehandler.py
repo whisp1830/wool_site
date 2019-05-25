@@ -23,7 +23,7 @@ class MainPageHandler(BaseHandler):
     	#page = int(page) if page else 1
         start = 20*(page-1)
         end   = 20*page
-        sql = "SELECT * FROM infos ORDER BY info_id DESC LIMIT %s,%s"
-        infos = mysql_conn.query(sql,start,end)
+        sql = "SELECT * FROM infos ORDER BY info_id DESC LIMIT %s,20"
+        infos = mysql_conn.query(sql,start)
         print name
         self.render('main_page.html',infos=infos,page=page,source="main",username=name)

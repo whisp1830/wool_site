@@ -24,10 +24,10 @@ def get_single_item_infos(url):
 	a = requests.get(url,headers=header,verify=False)
 	soup = BeautifulSoup(a.text,"lxml")
 
-	info_image = soup.find(name="img",attrs={"itemprop":"image"})['src']
-	info_title = soup.find(name="em",attrs={"itemprop":"name"}).text.strip()
-	info_price = soup.find(name="span",attrs={"class":"red"}).text.strip()
-	info_link = soup.find(name="div",attrs={"class":"buy"}).a['href']
+	info_image = soup.find(name="img",attrs={"class":"main-img"})['src']
+	info_title = soup.find(name="div",attrs={"class":"title J_title"}).text.strip()
+	info_price = soup.find(name="div",attrs={"class":"price"}).text.strip()
+	info_link = soup.find(name="div",attrs={"class":"btn-group J_btn_group"}).a['href']
 	info_tags_raw  = soup.find_all(name="div",attrs={"class":"meta-tags"})
 	info_detail_raw = soup.find_all(name="div",attrs={"class":"baoliao-block"})
 	
@@ -53,8 +53,6 @@ def save_item_info(infos):
 	for i in infos:
 		print type(i)
 	sql = "insert into infos(info_title,info_image,info_price,info_link,info_detail,info_tags) values(%s,%s,%s,%s,%s,%s)"
-	print sql
-	print " sdfa"
 	mysql_conn.execute(sql,infos[0],infos[1],infos[2],infos[3],infos[4],infos[5])
 
 

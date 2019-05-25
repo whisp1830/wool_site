@@ -191,7 +191,7 @@
                             </tr>
                             <tr>
                                 <th>类别</th>
-                                <td><a href="https://xclient.info/s/c/media/">{{infos['info_tags'][0]}}</a></td>
+                                <td><a href="/search?tag=${{infos['info_tags'][0]}}">{{infos['info_tags'][0]}}</a></td>
                             </tr>
                             <tr>
                                 <th>更新时间</th>
@@ -276,7 +276,21 @@
 <ul class="error_report">
 
 
-<li class="li other" id="other_report_reason" data-name="其他举报"><div class="other_report_box">
+
+</ul>
+</div>
+
+
+
+
+<div class="row pad-top-20">
+    <div class="col-12">
+        <div class="white-box">
+            
+            <!-- 历史版本 -->
+            <div class="history_version" id="versions">
+                <b>我要举报</b>
+                <li class="li other" id="other_report_reason" data-name="其他举报"><div class="other_report_box">
 请选择举报理由：
 <ul class="report_reason">
         <form method="post" action="/item">
@@ -290,63 +304,6 @@
 
 </div>
 </li>
-</ul>
-</div>
-
-
-
-
-<div class="row pad-top-20">
-    <div class="col-12">
-        <div class="white-box">
-            
-            <!-- 历史版本 -->
-            <div class="history_version" id="versions">
-                <b>历史优惠</b>
-                <table>
-                    <thead>
-                    <tr>
-                        <th class="version_num">品名</th>
-                        <th>更新时间</th>
-                        <th>价格</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                                                <tr>
-                        <td class="version_num">2.30</td>
-                        <td>英文</td>
-                        <td>2019-05-10</td>
-                        <td>30.3M</td>
-                        <td>
-                             
-                            <a class="btn-download" target="_blank" href="https://xclient.info/s/wolf.html?a=dl&amp;v=2.30&amp;k=0&amp;t=4d15fa81484cfb17e2392cf39e03d8ed23e0f4cf">
-                                <i class="iconfont icon-disk-ctfile"></i> 
-                                城通网盘                                    </a>
-                             
-                            <a class="btn-download" target="_blank" href="https://xclient.info/s/wolf.html?a=dl&amp;v=2.30&amp;k=1&amp;t=4d15fa81484cfb17e2392cf39e03d8ed23e0f4cf">
-                                <i class="iconfont icon-disk-baidu"></i> 
-                                百度云盘                                    </a>
-                                                            </td>
-                    </tr>
-                        <tr>
-                            <td class="version_num">1.52</td>
-                            <td>英文</td>
-                            <td>2018-07-04</td>
-                            <td>59.9M</td>
-                            <td>
-                                 
-                                <a class="btn-download" target="_blank" href="https://xclient.info/s/wolf.html?a=dl&amp;v=1.52&amp;k=2&amp;t=4d15fa81484cfb17e2392cf39e03d8ed23e0f4cf">
-                                    <i class="iconfont icon-disk-ctfile"></i> 
-                                    城通网盘                                    </a>
-                                 
-                                <a class="btn-download" target="_blank" href="https://xclient.info/s/wolf.html?a=dl&amp;v=1.52&amp;k=3&amp;t=4d15fa81484cfb17e2392cf39e03d8ed23e0f4cf">
-                                    <i class="iconfont icon-disk-baidu"></i> 
-                                    百度云盘                                    </a>
-                                                                </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
                 
             </div>
         </div>
