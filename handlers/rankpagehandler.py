@@ -47,8 +47,11 @@ class RankPageHandler(BaseHandler):
 			self.render("rank_page.html",infos=infos,page=1,source="rank",username=name)
 
 		if data == "global":
-			kwd = "热门海淘"
+			kwd = "海淘精选"
 			sql = "SELECT * FROM infos WHERE MATCH(info_tags) AGAINST(%s) ORDER BY info_update_time DESC LIMIT 40"
+			infos = mysql_conn.query(sql,kwd)
+			self.render("rank_page.html",infos=infos,page=1,source="rank",username=name)
+
 
 		else:
 			kwd = "最受好评"
