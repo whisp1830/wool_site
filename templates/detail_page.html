@@ -27,7 +27,7 @@
                 <div class="col-12 col-6-m nav">
                     <a class="nav-item nav-home" v-bind:class="{current:at=='index'}" href="/">全部羊毛</a>
 
-                    <a class="nav-item nav-soft" v-bind:class="{current:at.indexOf('soft')>=0}" href="https://xclient.info/s/">我的订阅</a>
+                    <a class="nav-item nav-soft" v-bind:class="{current:at.indexOf('soft')>=0}" href="#">我的订阅</a>
 
                     <a class="nav-item nav-post" v-bind:class="{current:(at=='post'||at=='archive'||at=='category'||at=='tag')}" href="/rank/best">排行榜</a>
                     <a class="nav-item nav-wishlist" href="/types">分类</a>
@@ -339,7 +339,7 @@
                                     {% if len(t)>7 and "/" not in t%}
 
                                     {% else %}
-                                        <a href="https://xclient.info/s/c/media/">{{t}}</a>     
+                                        <a href="/search?tag=${{t}}">{{t}}</a>     
                                     {% end %}                       
                                 {% end %}
                             </div>
